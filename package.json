@@ -1,0 +1,20 @@
+{
+  "name": "sanan-portfolio-workspace",
+  "private": true,
+  "scripts": {
+    "start": "python3 tools/local.py start",
+    "dev": "python3 tools/local.py start --reload",
+    "build": "python3 tools/local.py build",
+    "doctor": "python3 tools/local.py doctor",
+    "test": "python3 tools/local.py test",
+    "test:browser": "node tools/verify_hub.mjs",
+    "test:consoles": "node tools/verify_frontend_workflows.mjs",
+    "test:business": "node projects/delivery-desk/tests/verify_browser.mjs",
+    "test:quant": "node projects/quant-research-lab/tests/verify_browser.mjs",
+    "test:ppo": "node projects/multitask-ppo-lab/tests/verify_browser.mjs",
+    "test:site": "node tools/verify_site.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^25.1.0"
+  }
+}

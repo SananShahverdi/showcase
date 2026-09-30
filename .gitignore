@@ -1,0 +1,28 @@
+# Local state, environments, and secrets
+.local/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.sqlite3
+*.log
+
+# Build output and caches
+node_modules/
+**/dist/
+**/dist-portfolio/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.tsbuildinfo
+.wrangler/
+
+# Scraper output
+standalone/mit-ocw-smart-scraper/MIT_OCW_Courses/
+standalone/mit-ocw-smart-scraper/config.yaml
+
+# Rebuild marker from the showcase assembly script
+.showcase-build

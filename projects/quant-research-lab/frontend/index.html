@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#14202e">
+  <title>Quant Research Lab · Honest market research</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="mark" aria-hidden="true">∿</span> Quant Research Lab</a><a href="/" class="back">← Back to portfolio</a></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Forecasting · signals · risk</p>
+        <h1 id="page-title">Test the idea<br><span>before trusting it.</span></h1>
+        <p class="lede">Walk-forward forecasts scored against a random walk, a cost-aware signal backtest, and tail-risk analytics on real daily prices.</p>
+      </div>
+      <div class="dataset-panel">
+        <label>Dataset<select id="dataset"></select></label>
+        <p id="dataset-meta" class="meta">Loading datasets…</p>
+        <div class="panel-actions"><button id="upload-open" class="secondary">Upload CSV</button><button id="report" class="secondary">Download report</button></div>
+      </div>
+    </section>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <nav class="tabs" role="tablist" aria-label="Research views">
+      <button role="tab" id="tab-forecast" aria-controls="view-forecast" aria-selected="true">Forecasting</button>
+      <button role="tab" id="tab-strategy" aria-controls="view-strategy" aria-selected="false">Signal strategy</button>
+      <button role="tab" id="tab-risk" aria-controls="view-risk" aria-selected="false">Risk</button>
+    </nav>
+
+    <section id="view-forecast" role="tabpanel" aria-labelledby="tab-forecast" class="view">
+      <form id="forecast-form" class="controls">
+        <label>First training window<input name="min_train" type="number" min="60" max="5000" value="504"><small>rows before the first forecast</small></label>
+        <label>Retrain every<input name="step" type="number" min="5" max="252" value="63"><small>rows</small></label>
+        <label>Trading cost<input name="cost_bps" type="number" min="0" max="100" step="0.5" value="5"><small>basis points per change</small></label>
+        <button class="primary" type="submit">Run walk-forward study</button>
+      </form>
+      <div id="forecast-result" class="result" aria-live="polite" aria-busy="false"><p class="empty">Run the study to compare models out of sample.</p></div>
+    </section>
+
+    <section id="view-strategy" role="tabpanel" aria-labelledby="tab-strategy" class="view" hidden>
+      <form id="strategy-form" class="controls">
+        <label>Trend weight<input name="trend" type="number" min="-1" max="1" step="0.05" value="0.25"></label>
+        <label>Tendency weight<input name="tendency" type="number" min="-1" max="1" step="0.05" value="0.25"></label>
+        <label>Pattern weight<input name="pattern" type="number" min="-1" max="1" step="0.05" value="0.25"></label>
+        <label>Influence weight<input name="influence" type="number" min="-1" max="1" step="0.05" value="0.25"></label>
+        <label>Entry threshold<input name="threshold" type="number" min="-1" max="1" step="0.01" value="0"></label>
+        <label>Trading cost<input name="cost_bps" type="number" min="0" max="100" step="0.5" value="10"><small>basis points</small></label>
+        <button class="primary" type="submit">Run backtest</button>
+      </form>
+      <div id="strategy-result" class="result" aria-live="polite" aria-busy="false"><p class="empty">Run the backtest to compare the signal with buy and hold.</p></div>
+    </section>
+
+    <section id="view-risk" role="tabpanel" aria-labelledby="tab-risk" class="view" hidden>
+      <div id="risk-result" class="result" aria-live="polite" aria-busy="false"><p class="empty">Select the Risk tab to analyze the dataset.</p></div>
+    </section>
+  </main>
+  <footer>Quant Research Lab <span>Research output, not investment advice.</span></footer>
+
+  <dialog id="upload-dialog" aria-labelledby="upload-title">
+    <div class="dialog-head"><h2 id="upload-title">Upload daily prices</h2><button class="icon-button" data-close aria-label="Close upload">×</button></div>
+    <form id="upload-form">
+      <label>Name<input name="name" required maxlength="80" placeholder="e.g. MSFT daily"></label>
+      <label>CSV file<input name="file" type="file" accept=".csv,text/csv" required></label>
+      <p class="meta">Needs a date column (Date, Start, snapped_at) and a close column (Close, Close/Last, price). Volume is optional. Uploads stay in memory until the service restarts.</p>
+      <p id="upload-error" class="error" role="alert" hidden></p>
+      <div class="form-actions"><button type="button" class="secondary" data-close>Cancel</button><button class="primary" type="submit" id="upload-submit">Add dataset</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

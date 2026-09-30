@@ -1,0 +1,1 @@
+"""Stockroom HTTP interface."""

@@ -1,0 +1,26 @@
+# PostgreSQL instead of the default SQLite volume:
+#   cp .env.example .env   # then set POSTGRES_PASSWORD
+#   docker compose -f docker-compose.yml -f compose.postgres.yml up
+services:
+  api:
+    environment:
+      SELF_HEALING_PUBLIC_DATA_INTELLIGENCE_PIPELINE_DATABASE_URL: postgresql+psycopg2://portfolio:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/self_healing_public_data_intelligence_pipeline
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: self_healing_public_data_intelligence_pipeline
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio -d self_healing_public_data_intelligence_pipeline"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  postgres-data:

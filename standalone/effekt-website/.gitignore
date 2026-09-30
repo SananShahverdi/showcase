@@ -1,0 +1,25 @@
+node_modules
+dist
+.DS_Store
+*.local
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# TypeScript and Vite generated metadata
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+.vite/
+
+.wrangler/
+.wrangler/

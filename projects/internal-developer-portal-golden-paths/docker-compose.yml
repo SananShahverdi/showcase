@@ -1,0 +1,29 @@
+name: internal-developer-portal-golden-paths
+services:
+  api:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: bash -c "pip install -r requirements-dev.txt && uvicorn internal_developer_portal_golden_paths.api.app:app --host 0.0.0.0 --port 8008 --reload"
+    volumes:
+    - .:/workspace
+    - state-data:/state
+    ports:
+    - "8008:8008"
+    environment:
+      INTERNAL_DEVELOPER_PORTAL_ENV: local
+      PYTHONPATH: /workspace/src
+      INTERNAL_DEVELOPER_PORTAL_DATABASE_URL: sqlite:////state/state.sqlite3
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+    - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    ports:
+    - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:8008/api
+    depends_on:
+    - api
+volumes:
+  state-data:

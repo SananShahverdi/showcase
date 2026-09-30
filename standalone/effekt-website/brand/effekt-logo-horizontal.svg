@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 64" role="img" aria-labelledby="title desc" color="#0B1010" shape-rendering="geometricPrecision">
+  <title id="title">Effekt</title>
+  <desc id="desc">The Effekt architectural water symbol followed by a custom geometric wordmark.</desc>
+  <g fill="none" stroke="currentColor" stroke-linejoin="miter">
+    <rect x="6" y="6" width="52" height="52" stroke-width="3"/>
+    <polygon points="20,6 44,6 58,20 58,44 44,58 20,58 6,44 6,20" stroke-width="2"/>
+    <circle cx="32" cy="32" r="14" stroke-width="2.5"/>
+    <g stroke-width="2.5" stroke-linecap="square">
+      <line x1="32" y1="2" x2="32" y2="12"/>
+      <line x1="32" y1="52" x2="32" y2="62"/>
+      <line x1="2" y1="32" x2="12" y2="32"/>
+      <line x1="52" y1="32" x2="62" y2="32"/>
+    </g>
+  </g>
+  <circle cx="32" cy="32" r="4" fill="currentColor"/>
+  <g fill="currentColor" aria-hidden="true">
+    <path d="M78 18H98V23H84V29H95V34H84V41H98V46H78Z"/>
+    <path d="M104 18H124V23H110V29H121V34H110V46H104Z"/>
+    <path d="M128 18H148V23H134V29H145V34H134V46H128Z"/>
+    <path d="M152 18H172V23H158V29H169V34H158V41H172V46H152Z"/>
+    <path d="M178 18H184V29L196 18H204L192 30L205 46H197L187 34L184 37V46H178Z"/>
+    <path d="M208 18H230V23H222V46H216V23H208Z"/>
+  </g>
+</svg>

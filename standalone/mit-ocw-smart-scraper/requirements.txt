@@ -1,0 +1,36 @@
+# Core dependencies
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+pypdf>=3.17.0
+PyYAML>=6.0.1
+
+# Web scraping
+selenium>=4.15.0
+webdriver-manager>=4.0.1
+
+# Audio transcription (optional but recommended)
+openai-whisper>=20231117
+torch>=2.1.0
+torchaudio>=2.1.0
+
+# Utilities
+tqdm>=4.66.0
+python-dotenv>=1.0.0
+markdownify>=0.11.6
+
+# Testing
+pytest>=7.4.3
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Additional audio handling
+ffmpeg-python>=0.2.0
+soundfile>=0.12.1
+
+# PDF processing enhancements
+PyMuPDF>=1.23.0  # Alternative PDF library
+Pillow>=10.1.0  # Image handling
+reportlab>=4.0.0  # Text-to-PDF rendering
+
+# Code syntax highlighting
+Pygments>=2.17.0

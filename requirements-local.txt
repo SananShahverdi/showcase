@@ -1,0 +1,22 @@
+# Runtime dependencies for the unified local workspace. Standalone products
+# retain their own requirements; this is their shared, tested local superset.
+fastapi==0.110.0
+uvicorn==0.27.1
+pydantic==2.6.3
+pydantic-settings==2.2.1
+SQLAlchemy==2.0.51
+httpx==0.27.0
+python-multipart==0.0.9
+beautifulsoup4==4.12.3
+pypdf==4.1.0
+python-docx==1.1.0
+markdown==3.5.2
+numpy==1.26.4
+pandas==2.3.3
+scipy==1.16.3
+scikit-learn==1.9.0
+networkx==3.2.1
+pytest==8.0.2
+wasmtime==48.0.0
+# CPU wheel: pip install -r requirements-local.txt --extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.9.0

@@ -1,0 +1,27 @@
+name: network-digital-twin-rl-routing-optimizer
+services:
+  api:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: bash -c "pip install -r requirements.txt && uvicorn network_digital_twin_rl_routing_optimizer.api.app:app --host 0.0.0.0 --port 8003 --reload"
+    volumes:
+    - .:/workspace
+    - state-data:/state
+    ports:
+    - "8003:8003"
+    environment:
+      NETWORK_DIGITAL_TWIN_ENV: local
+      PYTHONPATH: /workspace/src
+      NETWORK_DIGITAL_TWIN_DATABASE_URL: sqlite:////state/state.sqlite3
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+    - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    environment:
+      VITE_API_PROXY: http://api:8003
+    ports:
+    - "5173:5173"
+volumes:
+  state-data:

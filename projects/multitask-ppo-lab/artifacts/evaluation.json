@@ -1,0 +1,74 @@
+[
+ {
+  "policy": "random",
+  "task": "navigation",
+  "episodes": 200,
+  "success_rate": 0.915,
+  "mean_return": -0.03159999999999859,
+  "mean_steps": 57.285,
+  "optimality": 0.21418054392716404
+ },
+ {
+  "policy": "ppo_sampled",
+  "task": "navigation",
+  "episodes": 200,
+  "success_rate": 1.0,
+  "mean_return": 0.97445,
+  "mean_steps": 3.545,
+  "optimality": 0.992354797979798
+ },
+ {
+  "policy": "ppo_greedy",
+  "task": "navigation",
+  "episodes": 200,
+  "success_rate": 0.995,
+  "mean_return": 0.9611500000000001,
+  "mean_steps": 4.38,
+  "optimality": 0.9990863407948835
+ },
+ {
+  "policy": "oracle",
+  "task": "navigation",
+  "episodes": 200,
+  "success_rate": 1.0,
+  "mean_return": 0.9756999999999999,
+  "mean_steps": 3.43,
+  "optimality": 1.0
+ },
+ {
+  "policy": "random",
+  "task": "key_door",
+  "episodes": 200,
+  "success_rate": 0.205,
+  "mean_return": -2.2806999999999933,
+  "mean_steps": 182.245,
+  "optimality": 0.07104778644094543
+ },
+ {
+  "policy": "ppo_sampled",
+  "task": "key_door",
+  "episodes": 200,
+  "success_rate": 0.995,
+  "mean_return": 1.10265,
+  "mean_steps": 10.07,
+  "optimality": 0.9839612156922393
+ },
+ {
+  "policy": "ppo_greedy",
+  "task": "key_door",
+  "episodes": 200,
+  "success_rate": 0.98,
+  "mean_return": 1.0414499999999998,
+  "mean_steps": 12.575,
+  "optimality": 0.998222016079159
+ },
+ {
+  "policy": "oracle",
+  "task": "key_door",
+  "episodes": 200,
+  "success_rate": 1.0,
+  "mean_return": 1.1210499999999999,
+  "mean_steps": 8.895,
+  "optimality": 1.0
+ }
+]

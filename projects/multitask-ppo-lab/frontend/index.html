@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1b1f3b">
+  <title>Multi-Task PPO Lab · One network, two tasks</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="mark" aria-hidden="true">◈</span> Multi-Task PPO Lab</a><a href="/" class="back">← Back to portfolio</a></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Reinforcement learning · PPO from scratch</p>
+        <h1 id="page-title">One network,<br><span>two different jobs.</span></h1>
+        <p class="lede">A single convolutional policy learns both gridworld navigation and a key-and-door task. Watch it play a layout it has never seen, beside a random agent and the optimal path.</p>
+      </div>
+      <dl class="facts" id="facts" aria-live="polite"><div><dt>Status</dt><dd>Loading…</dd></div></dl>
+    </section>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <section aria-labelledby="replay-title" class="panel">
+      <div class="panel-head">
+        <h2 id="replay-title">Replay on a held-out layout</h2>
+        <form id="replay-form" class="controls">
+          <label>Task<select name="task" id="task"><option value="key_door" selected>Key and door</option><option value="navigation">Navigation</option></select></label>
+          <label>Layout<input name="seed" id="seed" type="number" min="0" max="1000000" value="2"></label>
+          <button type="button" id="shuffle" class="secondary">New layout</button>
+          <button type="submit" class="primary" id="play">Play</button>
+        </form>
+      </div>
+      <p class="legend"><span class="cell agent">A</span> agent <span class="cell goal">G</span> goal or door <span class="cell key">K</span> key <span class="cell wall"></span> wall</p>
+      <div id="boards" class="boards" aria-busy="false"><p class="empty">Choose a task and press Play.</p></div>
+      <p id="replay-status" class="sr-only" role="status" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="eval-title" class="panel">
+      <h2 id="eval-title">Held-out evaluation</h2>
+      <div id="evaluation" class="table-wrap"><p class="empty">Loading…</p></div>
+      <p class="meta">Each policy plays the same held-out layouts. Optimality is the optimal step count divided by the steps taken, averaged over successful episodes; the oracle uses breadth-first search.</p>
+    </section>
+
+    <section aria-labelledby="curve-title" class="panel">
+      <h2 id="curve-title">Learning curves</h2>
+      <div id="curves"><p class="empty">Loading…</p></div>
+    </section>
+  </main>
+  <footer>Multi-Task PPO Lab <span>PyTorch · FastAPI · no external RL libraries</span></footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+name: self-healing-public-data-intelligence-pipeline
+services:
+  api:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: bash -c "pip install -r requirements.txt && uvicorn self_healing_public_data_intelligence_pipeline.api.app:app --host 0.0.0.0 --port 8002 --reload"
+    volumes:
+    - .:/workspace
+    - state-data:/state
+    ports:
+    - "8002:8002"
+    environment:
+      SELF_HEALING_PUBLIC_DATA_INTELLIGENCE_PIPELINE_ENV: local
+      PYTHONPATH: /workspace/src
+      SELF_HEALING_PUBLIC_DATA_INTELLIGENCE_PIPELINE_DATABASE_URL: sqlite:////state/state.sqlite3
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+    - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    environment:
+      VITE_API_PROXY: http://api:8002
+    ports:
+    - "5173:5173"
+volumes:
+  state-data:

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sanan Shahverdi · Full-stack & machine-learning engineer</title>
+  <meta name="description" content="Portfolio of Sanan Shahverdi: 23 runnable projects spanning full-stack products, reinforcement learning, forecasting research, network simulation, and spacecraft autonomy, each with tests and measured results.">
+  <meta name="theme-color" content="#0b0f14">
+  <meta property="og:title" content="Sanan Shahverdi · Full-stack & machine-learning engineer">
+  <meta property="og:description" content="23 runnable projects with tests, baselines, and measured results.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Sanan Shahverdi, back to top"><span class="brand-mark" aria-hidden="true">S<i>s</i></span><span>Sanan Shahverdi</span></a>
+    <nav aria-label="Sections">
+      <a href="#work">Case studies</a>
+      <a href="#projects">Projects</a>
+      <a href="#practice">Practice</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-button" id="theme" type="button" aria-label="Switch to light theme"><span aria-hidden="true"></span></button>
+      <a class="button small" href="assets/Sanan_Shahverdi_CV.pdf" download>CV <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <canvas id="network" aria-hidden="true"></canvas>
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Full-stack &amp; machine-learning engineer</p>
+        <h1 id="hero-title" class="reveal">I build systems<br>and <em>measure</em> them.</h1>
+        <p class="lede reveal">Products with real APIs, interfaces, and persistence. Learning systems judged against baselines on data they have never seen. Every project here runs, and every claim has a test behind it.</p>
+        <div class="actions reveal">
+          <a class="button" href="#work">See the case studies <span aria-hidden="true">→</span></a>
+          <a class="button ghost" href="#" data-github>GitHub</a>
+        </div>
+        <p class="hint reveal" aria-hidden="true">Move across the network: packets route around your pointer like congestion.</p>
+      </div>
+      <dl class="stats" aria-label="Portfolio at a glance">
+        <div class="reveal"><dt>Runnable projects</dt><dd data-count="23">23</dd></div>
+        <div class="reveal"><dt>Automated tests</dt><dd data-count="370" data-suffix="+">370+</dd></div>
+        <div class="reveal"><dt>Products in one hub</dt><dd data-count="19">19</dd></div>
+        <div class="reveal"><dt>Docker-verified products</dt><dd data-count="19">19</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-title">
+      <header class="section-head reveal">
+        <p class="eyebrow">01 · Case studies</p>
+        <h2 id="work-title">Three results you can <em>replay</em>.</h2>
+        <p>Each view below is driven by data exported from the project itself: recorded agent episodes, evaluation tables, and simulation results.</p>
+      </header>
+
+      <article class="case reveal" aria-labelledby="ppo-title">
+        <div class="case-copy">
+          <p class="tag">Reinforcement learning · PyTorch</p>
+          <h3 id="ppo-title">Multi-Task PPO Lab</h3>
+          <p>One neural network learns two different jobs: reaching a goal, and fetching a key before opening a door. PPO is written from scratch, and the agent is tested on layouts it never saw during training, beside a random agent and the optimal path.</p>
+          <div class="segmented" role="tablist" aria-label="Task">
+            <button role="tab" aria-selected="true" data-task="key_door">Key and door</button>
+            <button role="tab" aria-selected="false" data-task="navigation">Navigation</button>
+          </div>
+          <div class="ppo-stats" id="ppo-stats" aria-live="polite"></div>
+          <p class="fine" id="ppo-fine"></p>
+        </div>
+        <div class="case-visual">
+          <div class="replay" id="replay" aria-live="polite"></div>
+          <div class="replay-controls">
+            <button class="button small" id="replay-play" type="button">Replay</button>
+            <button class="button small ghost" id="replay-next" type="button">Another layout</button>
+            <span class="legend"><i class="c-agent"></i>agent <i class="c-goal"></i>goal / door <i class="c-key"></i>key</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="case reverse reveal" aria-labelledby="nf-title">
+        <div class="case-copy">
+          <p class="tag">Simulation · Queueing theory</p>
+          <h3 id="nf-title">NeuroFlow</h3>
+          <p>A network of queues, verified against M/M/1 and M/D/1 theory, asks when learned routing beats shortest paths. Drag the load to where the busiest link saturates, and past it.</p>
+          <label class="slider-label" for="nf-load">Busiest-node load <output id="nf-load-out">90%</output></label>
+          <input id="nf-load" type="range" min="0" max="4" step="1" value="2" aria-describedby="nf-note">
+          <p class="insight" id="nf-note" aria-live="polite"></p>
+        </div>
+        <div class="case-visual">
+          <div class="bars" id="nf-bars" role="img" aria-label="Mean delivery time by routing policy"></div>
+          <p class="fine">Mean delivery time, log scale, 3 seeded runs per point. One time unit is the mean service time.</p>
+        </div>
+      </article>
+
+      <article class="case reveal" aria-labelledby="q-title">
+        <div class="case-copy">
+          <p class="tag">Forecasting · Statistics</p>
+          <h3 id="q-title">Quant Research Lab</h3>
+          <p>Ten years of daily AAPL prices, walk-forward evaluation, and a significance test against a random walk. The honest result is the interesting one: no model beats the random walk, and the trading signal trails buy and hold.</p>
+          <div class="model-table" id="q-models"></div>
+        </div>
+        <div class="case-visual">
+          <svg class="equity" id="q-equity" viewBox="0 0 600 320" role="img" aria-labelledby="q-equity-title"><title id="q-equity-title">Growth of one dollar: signal strategy versus buy and hold</title></svg>
+          <p class="fine" id="q-fine"></p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <header class="section-head reveal">
+        <p class="eyebrow">02 · Projects</p>
+        <h2 id="projects-title">Everything, <em>runnable</em>.</h2>
+        <p>Nineteen products share one local hub, and four stand on their own. Open any card for the problem, the approach, and where to find the source.</p>
+      </header>
+      <div class="filters reveal">
+        <div class="chips" id="chips" role="group" aria-label="Filter by discipline"></div>
+        <label class="search"><span class="sr-only">Search projects</span><input id="search" type="search" placeholder="Search by name or technology" autocomplete="off"></label>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <ul class="grid" id="grid"></ul>
+    </section>
+
+    <section class="section practice" id="practice" aria-labelledby="practice-title">
+      <header class="section-head reveal">
+        <p class="eyebrow">03 · Practice</p>
+        <h2 id="practice-title">How the work is <em>checked</em>.</h2>
+      </header>
+      <ol class="principles">
+        <li class="reveal"><span class="num">i</span><h3>Test against ground truth</h3><p>Simulators are checked against queueing formulas, forecasts against look-ahead leaks, persistence against real container restarts, and interfaces against real browser workflows.</p></li>
+        <li class="reveal"><span class="num">ii</span><h3>Report the baseline</h3><p>Every learned model is shown beside a naive or optimal reference, on held-out data, including when the comparison is unflattering.</p></li>
+        <li class="reveal"><span class="num">iii</span><h3>Label the scope</h3><p>Simulations, synthetic data, and offline providers say so in the interface and the documentation. Nothing is presented as deployed when it is not.</p></li>
+        <li class="reveal"><span class="num">iv</span><h3>Ship the whole thing</h3><p>An API, an interface, persistence, Docker packaging, documentation, and continuous integration: a project is finished when someone else can run it.</p></li>
+      </ol>
+      <div class="stack reveal" aria-labelledby="stack-title">
+        <h3 id="stack-title">Tools I reach for</h3>
+        <dl>
+          <div><dt>Languages</dt><dd>Python · TypeScript · JavaScript · SQL · Go · Java · C# · C/C++</dd></div>
+          <div><dt>Back end</dt><dd>FastAPI · Pydantic · SQLAlchemy · PostgreSQL · SQLite</dd></div>
+          <div><dt>Front end</dt><dd>React · Vite · Three.js · accessible, responsive UI</dd></div>
+          <div><dt>ML &amp; data</dt><dd>PyTorch · scikit-learn · NumPy · pandas · SciPy</dd></div>
+          <div><dt>Delivery</dt><dd>pytest · Puppeteer · Docker Compose · GitHub Actions</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="reveal">
+        <p class="eyebrow">04 · Contact</p>
+        <h2 id="contact-title">Let's build something <em>measurable</em>.</h2>
+        <p class="lede">Open to full-stack, backend, and machine-learning roles, remote or with relocation.</p>
+        <div class="actions">
+          <button class="button" id="copy-email" type="button" data-email>Copy email</button>
+          <a class="button ghost" href="assets/Sanan_Shahverdi_CV.pdf" download>Download CV (PDF)</a>
+          <a class="button ghost" href="#" data-github>GitHub</a>
+        </div>
+        <p class="email" id="email-text"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Sanan Shahverdi</span>
+    <span>Built by hand with HTML, CSS, and JavaScript.</span>
+  </footer>
+
+  <dialog id="project-dialog" aria-labelledby="dialog-title">
+    <button class="icon-button close" type="button" data-close aria-label="Close project details">×</button>
+    <div id="dialog-body"></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

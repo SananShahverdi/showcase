@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="description" content="Sanan Shahverdi's full-stack engineering portfolio. Explore working applications, inspect their source, and follow the decisions behind AI, data, and backend systems.">
+  <title>Sanan Shahverdi — Full-stack & backend engineer</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script type="module" src="/assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="/" aria-label="Sanan Shahverdi home"><span class="monogram" aria-hidden="true">s<span>.</span></span><span>Sanan Shahverdi<span class="wordmark-role">Full-stack & backend engineer</span></span></a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+    <span class="local-label"><i></i> Local workspace</span>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow"><span class="short-line"></span> SOFTWARE, FROM END TO END</p><h1 id="hero-title">I build the interface.<br>And everything<br><span>behind it.</span></h1><p class="hero-description">Thoughtful interfaces. Useful AI. Dependable backends.<br class="desktop-break"> A collection of systems you can open, use, and inspect.</p><div class="hero-actions"><a class="button primary" href="#work">Explore the work <span aria-hidden="true">↘</span></a><a class="text-link" href="#about">A little about me <span aria-hidden="true">→</span></a></div><div class="hero-footnote"><span class="mini-stack" aria-hidden="true">{ }</span><span>Python & TypeScript <b>·</b> APIs to interfaces</span></div></div>
+      <div class="system-card" aria-label="Live local project status">
+        <div class="system-top"><span class="eyebrow">INSIDE THE WORKSPACE</span><span class="tiny-pill">LIVE CHECK</span></div>
+        <div class="system-title"><h2>Follow the request.</h2><p>Every good interface has a system behind it.</p></div>
+        <div class="request-path"><div class="request-node"><span class="node-icon" aria-hidden="true">▤</span><div><strong>Interface</strong><small>A clear way in</small></div><span class="node-tech">React / JS</span></div><div class="connector" aria-hidden="true"><span>request</span></div><div class="request-node highlighted"><span class="node-icon" aria-hidden="true">{ }</span><div><strong>Application</strong><small>Rules, decisions, workflows</small></div><span class="node-tech">FastAPI</span></div><div class="connector" aria-hidden="true"><span>result + evidence</span></div><div class="request-node"><span class="node-icon" aria-hidden="true">▱</span><div><strong>Data</strong><small>State you can inspect</small></div><span class="node-tech">SQLite / local</span></div></div>
+        <div class="system-bottom"><span id="system-status" role="status"><i class="status-dot pending"></i>Checking local services…</span><button class="icon-button" id="refresh-status" aria-label="Refresh project status" title="Refresh project status">↻</button></div>
+      </div>
+    </section>
+
+    <div class="practice-strip wrap"><p>Built to be explored.</p><div><span><i aria-hidden="true">↗</i> Working demos</span><span><i aria-hidden="true">⌘</i> Inspectable source</span><span><i aria-hidden="true">✓</i> Explicit tradeoffs</span><span><i aria-hidden="true">⌂</i> Runs locally</span></div></div>
+
+    <section class="work-section wrap" id="work" aria-labelledby="work-title"><div class="section-heading"><div><p class="eyebrow">A FEW PLACES TO START</p><h2 id="work-title">Selected work<span class="heading-dot">.</span></h2></div><a class="text-link" href="#projects">View the full collection <span aria-hidden="true">↓</span></a></div><div class="featured-grid" id="featured-grid" aria-live="polite"><div class="loading-card">Opening the project collection…</div></div></section>
+
+    <section class="directory-section wrap" id="projects" aria-labelledby="directory-title"><div class="section-heading"><div><p class="eyebrow">THE COMPLETE WORKSPACE</p><h2 id="directory-title">More beneath the surface.</h2></div><span class="project-total" id="project-total"></span></div><div class="directory-toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><input id="project-search" type="search" placeholder="Search projects, ideas, or technologies" aria-label="Search projects"></label><button id="saved-filter" class="filter-toggle" aria-pressed="false"><span aria-hidden="true">☆</span> Saved <span id="saved-count">0</span></button></div><div class="category-filters" id="category-filters" role="group" aria-label="Filter by discipline"></div><p class="result-count" id="result-count" aria-live="polite"></p><div id="project-list" class="project-list"></div></section>
+
+    <section class="about-section wrap" id="about" aria-labelledby="about-title"><div class="about-intro"><p class="eyebrow">THE PERSON BEHIND THE PROJECTS</p><h2 id="about-title">Curious about the whole system.</h2><p>I’m Sanan, a full-stack and backend engineer. I like the part where a complicated problem becomes a tool someone can actually use.</p><p>My work explores AI applications, data reliability, developer tools, and network systems. This workspace brings the interface and the underlying engineering together, so you can judge both.</p><a class="text-link" href="https://github.com/SananShahverdi" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a></div><div class="about-details"><div class="detail-block"><span class="eyebrow">WHAT I WORK WITH</span><h3>A practical, connected stack.</h3><div class="stack-tags"><span>Python</span><span>TypeScript</span><span>React</span><span>FastAPI</span><span>SQL</span><span>Docker</span><span>Pytest</span><span>JavaScript</span></div></div><div class="detail-block"><span class="eyebrow">HOW I BUILD</span><ul class="principles"><li><span>Usable from the first screen</span><p>Clear workflows, useful empty states, and errors that explain the next step.</p></li><li><span>Evidence close to the result</span><p>Source, tests, and implementation boundaries alongside each project.</p></li><li><span>Honest about the scope</span><p>Simulations and offline providers are labeled. Local demos have local limits.</p></li></ul></div></div></section>
+
+    <section class="contact-section wrap" id="contact" aria-labelledby="contact-title"><div><p class="eyebrow">LET’S CONNECT</p><h2 id="contact-title">Have something<br>worth building?</h2><p>I’m interested in useful products and the engineering that makes them work.</p><a class="contact-email" href="mailto:shahverdi.senan@gmail.com">shahverdi.senan@gmail.com <span aria-hidden="true">↗</span></a><button class="text-link copy-email" id="copy-email">Copy email address</button></div><div class="note-panel"><h3>Leave a workspace note</h3><p>Saved on this computer for the next review.<br>This form does not send email.</p><form id="note-form"><div class="form-row"><label>Your name<input name="name" autocomplete="name" required minlength="2" maxlength="100" placeholder="Name"></label><label>Email<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label></div><label>Your note<textarea name="message" required minlength="10" maxlength="3000" rows="3" placeholder="What should we build or improve?"></textarea></label><div class="form-footer"><button class="button primary" type="submit">Save note <span aria-hidden="true">→</span></button><button class="text-link" type="button" id="view-notes">View saved notes</button></div><p id="note-status" role="status"></p></form></div></section>
+  </main>
+  <footer class="site-footer wrap"><a class="wordmark" href="/"><span class="monogram small" aria-hidden="true">s<span>.</span></span><span>Sanan Shahverdi</span></a><p>Built with intent. Open to inspection.</p><a class="text-link" href="#main">Back to top ↑</a></footer>
+
+  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="eyebrow" id="dialog-category">PROJECT CASE STUDY</span><button class="icon-button close-dialog" aria-label="Close project details">×</button></div><div id="dialog-content"></div></dialog>
+  <dialog id="notes-dialog" aria-labelledby="notes-title"><div class="dialog-top"><h2 id="notes-title">Workspace notes</h2><button class="icon-button close-dialog" aria-label="Close saved notes">×</button></div><p class="muted">Stored locally on this computer. No email has been sent.</p><div id="notes-list"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

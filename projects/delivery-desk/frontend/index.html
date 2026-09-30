@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#233866">
+  <title>Delivery Desk · Work in motion</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="mark" aria-hidden="true">↗</span> Delivery Desk</a><a href="/" class="back">← Back to portfolio</a></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">Your team's work, in view</p><h1 id="page-title">Make room for<br><span>the next delivery.</span></h1><p class="lede">A clear place to plan, move, and finish the work.</p></div><div class="intro-actions"><button id="new-task" class="primary"><span aria-hidden="true">+</span> New task</button><button id="seed" class="secondary">Add sample tasks</button><p>Changes are saved on this computer.</p></div></section>
+    <section class="summary" aria-label="Workspace totals"><span>Across the workspace</span><p><strong id="active-count">—</strong> in progress</p><p><strong id="done-count">—</strong> delivered</p><p><strong id="total-count">—</strong> total tasks</p></section>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section class="workspace" aria-label="Task board"><div class="toolbar"><label class="search">Find a task<input id="search" type="search" placeholder="Search title, notes, or assignee" maxlength="200"></label><label>Project<select id="project-filter"><option value="">All projects</option></select></label><label>Priority<select id="priority-filter"><option value="">All priorities</option><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select></label><button id="refresh" class="secondary refresh">Refresh</button></div><div id="board" class="board" aria-live="polite" aria-busy="true"><p class="loading">Loading your workspace…</p></div></section>
+  </main>
+  <footer>Delivery Desk <span>A local workspace for thoughtful delivery.</span></footer>
+  <dialog id="task-dialog" aria-labelledby="dialog-title"><div class="dialog-head"><div><p class="eyebrow" id="task-reference">New work</p><h2 id="dialog-title">Create a task</h2></div><button class="icon-button" id="close-dialog" aria-label="Close task editor">×</button></div><form id="task-form"><label>Task title<input name="title" required maxlength="160" placeholder="What needs to happen?"></label><label>Description<textarea name="description" rows="3" maxlength="4000" placeholder="Add context, a clear outcome, or useful details."></textarea></label><div class="form-grid"><label>Project<input name="project" required maxlength="80" list="project-options" value="General"></label><datalist id="project-options"></datalist><label>Assignee<input name="assignee" maxlength="80" placeholder="Unassigned"></label><label>Stage<select name="status"><option value="backlog">Backlog</option><option value="in_progress">In progress</option><option value="review">In review</option><option value="done">Done</option></select></label><label>Priority<select name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label><label>Due date<input name="due_date" type="date"></label></div><p id="form-error" class="error" role="alert" hidden></p><div class="form-actions"><button type="button" id="cancel" class="secondary">Cancel</button><button type="submit" id="save" class="primary">Create task</button></div></form><section id="history-section" class="history-section" hidden><h3>Change history</h3><ol id="history"></ol></section></dialog>
+</body>
+</html>

@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Hub and product tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements-local.txt
+      - name: Install dependencies (CPU-only PyTorch)
+        run: python -m pip install -r requirements-local.txt PyYAML --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: Run the hub suite and every product suite
+        run: python tools/local.py test
+
+  consoles:
+    name: Console lint and production builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Lint and build the React consoles
+        run: cd projects && ./run_all_frontend_checks.sh
+      - name: Verify structure, documentation, and Compose files
+        run: |
+          python -m pip install PyYAML
+          python tools/verify_portfolio.py
+
+  site:
+    name: Overview site in a browser
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - run: npm run test:site
+
+  scraper:
+    name: MIT OCW Smart Scraper
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: standalone/mit-ocw-smart-scraper
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install requests beautifulsoup4 pypdf PyYAML reportlab markdownify pytest
+      - run: python -m pytest -q
+
+  neuroflow:
+    name: NeuroFlow simulator
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: standalone/neuroflow
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+
+  asp1:
+    name: ASP-1 autonomy simulator
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: standalone/asp-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+
+  website:
+    name: Effekt website build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: standalone/effekt-website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: standalone/effekt-website/package-lock.json
+      - run: npm ci
+      - run: npm run build

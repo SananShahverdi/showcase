@@ -1,0 +1,36 @@
+# MIT OCW Smart Scraper configuration template
+
+output:
+  base_directory: MIT_OCW_Courses
+  clean_temp_files: true
+
+scraping:
+  calls_per_second: 2.0
+  timeout: 30
+  max_retries: 3
+  retry_backoff_seconds: 2.0
+  jitter: 0.1
+  scroll_pause: 1.0
+  max_scroll_iterations: 40
+  stable_iterations: 3
+  max_asset_size_mb: 75
+
+processing:
+  max_workers: 3
+  transcription_workers: 1
+  skip_audio: false
+  skip_books: false
+  skip_code_pdf: false
+  limit_courses: null
+  max_master_pdf_mb: 200
+
+books:
+  max_redirects: 10
+  match_threshold: 87
+  timeout: 20
+  max_download_size_mb: 120
+
+transcription:
+  model: base
+  language: en
+  min_duration_seconds: 1.0

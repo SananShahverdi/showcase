@@ -1,0 +1,26 @@
+name: edge-wasm-plugin-runtime-data-network-rules
+services:
+  api:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: sh -c "pip install -r requirements.txt && uvicorn edge_wasm_plugin_runtime.api.app:app --host 0.0.0.0 --port 8013"
+    volumes:
+    - .:/workspace
+    - state-data:/state
+    environment:
+      PYTHONPATH: /workspace/src
+      EDGE_WASM_DATABASE_URL: sqlite:////state/state.sqlite3
+    ports:
+    - "8013:8013"
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    volumes:
+    - ./frontend:/app
+    depends_on:
+    - api
+    ports:
+    - "5173:5173"
+volumes:
+  state-data:

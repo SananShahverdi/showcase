@@ -1,0 +1,22 @@
+name: quant-research-lab
+
+services:
+  api:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: sh -c "pip install -r requirements.txt && uvicorn quant_research_lab.api.app:app --host 0.0.0.0 --port 8023"
+    volumes:
+      - .:/workspace
+    environment:
+      PYTHONPATH: /workspace/src
+    ports:
+      - "8023:8023"
+  frontend:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - api
+    ports:
+      - "5175:80"

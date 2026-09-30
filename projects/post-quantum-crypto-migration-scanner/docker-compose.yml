@@ -1,0 +1,26 @@
+name: post-quantum-crypto-migration-scanner
+services:
+  api:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: sh -c "pip install -r requirements.txt && uvicorn post_quantum_crypto_migration_scanner.api.app:app --host 0.0.0.0 --port 8011"
+    volumes:
+    - .:/workspace
+    - state-data:/state
+    environment:
+      PYTHONPATH: /workspace/src
+      PQC_SCANNER_DATABASE_URL: sqlite:////state/state.sqlite3
+    ports:
+    - "8011:8011"
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    volumes:
+    - ./frontend:/app
+    depends_on:
+    - api
+    ports:
+    - "5173:5173"
+volumes:
+  state-data:
